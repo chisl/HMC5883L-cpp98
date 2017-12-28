@@ -34,7 +34,7 @@ public:
 	
 	/*
 	 * REG ConfigA:
-	 * Configure the device for setting the data output rate and measurement configuration. 
+	 * Configure the device for setting the data output rate and measurement configuration.
 	 */
 	struct ConfigA
 	{
@@ -61,8 +61,8 @@ public:
 		/* Bits DO: */
 		/*
 		 * All selectable data output rates in continuous measurement mode. All three channels shall be measured
-		 *           within a given output rate. Other output rates with maximum rate of 160 Hz can be achieved by
-		 *           monitoring DRDY interrupt pin in single measurement mode. 
+		 * within a given output rate. Other output rates with maximum rate of 160 Hz can be achieved by
+		 * monitoring DRDY interrupt pin in single measurement mode.
 		 */
 		struct DO
 		{
@@ -80,8 +80,8 @@ public:
 		/* Bits MS: */
 		/*
 		 * The Measurement Configuration Bits define the measurement flow of the device,
-		 *           specifically whether or not to incorporate an applied bias into the measurement. 
-		 * 'b11 reserved. 
+		 * specifically whether or not to incorporate an applied bias into the measurement.
+		 * 'b11 reserved.
 		 */
 		struct MS
 		{
@@ -114,7 +114,7 @@ public:
 	
 	/*
 	 * REG ConfigB:
-	 * Set the device gain. 
+	 * Set the device gain.
 	 */
 	struct ConfigB
 	{
@@ -123,8 +123,8 @@ public:
 		/* Bits GN: */
 		/*
 		 * The Gain Configuration Bits configure the gain for the device.
-		 *           The gain configuration is common for all channels.
-		 *           <br>Sensor field range / Gain (LSb/G) / digital resolution (mG/LSb) / Output range 
+		 * The gain configuration is common for all channels.
+		 * <br>Sensor field range / Gain (LSb/G) / digital resolution (mG/LSb) / Output range
 		 */
 		struct GN
 		{
@@ -168,7 +168,7 @@ public:
 	
 	/*
 	 * REG Mode:
-	 * Select operating mode of the device 
+	 * Select operating mode of the device
 	 */
 	struct Mode
 	{
@@ -194,12 +194,12 @@ public:
 			static const uint8_t mask = 0b00000011; // [0,1]
 			/*
 			 * Continuous-Measurement Mode. In continuous-measurement mode, the device continuously
-			 *             - performs measurements and places the result in the data register.
-			 *             - RDY goes high when new data is placed in all three registers. After a power-on or a
-			 *             - write to the mode or configuration register, the first measurement set is available
-			 *             - from all three data output registers after a period of 2/fDO and subsequent
-			 *             - measurements are available at a frequency of fDO, where fDO is the frequency of data
-			 *             - output. 
+			 * - performs measurements and places the result in the data register.
+			 * - RDY goes high when new data is placed in all three registers. After a power-on or a
+			 * - write to the mode or configuration register, the first measurement set is available
+			 * - from all three data output registers after a period of 2/fDO and subsequent
+			 * - measurements are available at a frequency of fDO, where fDO is the frequency of data
+			 * - output.
 			 */
 			static const uint8_t Continuous = 0b00;
 			static const uint8_t Single = 0b01; // Single-Measurement Mode (Default). When single-measurement mode is selected, device performs a single measurement, sets RDY high and returned to idle mode. Mode register returns to idle mode bit values. The measurement remains in the data output register and RDY remains high until the data output register is read or another measurement is performed.
@@ -230,8 +230,8 @@ public:
 	/*
 	 * REG DataOutputX:
 	 * These registers store the measurement result from channel X.
-	 *       The value stored in these two registers is a 16-bit value in 2's complement form, whose range is
-	 *       0xF800 to 0x07FF. 
+	 * The value stored in these two registers is a 16-bit value in 2's complement form, whose range is
+	 * 0xF800 to 0x07FF.
 	 */
 	struct DataOutputX
 	{
@@ -266,7 +266,7 @@ public:
 	
 	/*
 	 * REG DataOutputZ:
-	 * These registers store the measurement result from channel Z. 
+	 * These registers store the measurement result from channel Z.
 	 */
 	struct DataOutputZ
 	{
@@ -301,7 +301,7 @@ public:
 	
 	/*
 	 * REG DataOutputY:
-	 * These registers store the measurement result from channel Y. 
+	 * These registers store the measurement result from channel Y.
 	 */
 	struct DataOutputY
 	{
@@ -336,7 +336,7 @@ public:
 	
 	/*
 	 * REG Status:
-	 * Indicate the device status. 
+	 * Indicate the device status.
 	 */
 	struct Status
 	{
@@ -351,13 +351,13 @@ public:
 		/* Bits LOCK: */
 		/*
 		 * Data output register lock. This bit is set when:
-		 *           1. some but not all for of the six data output registers have been read,
-		 *           2. Mode register has been read.
-		 *           When this bit is set, the six data output registers are locked and any new data will not be placed in these register until one of these conditions are met:
-		 *           1. all six bytes have been read,
-		 *           2. the mode register is changed,
-		 *           3. the measurement configuration (CRA) is changed,
-		 *           4. power is reset. 
+		 * 1. some but not all for of the six data output registers have been read,
+		 * 2. Mode register has been read.
+		 * When this bit is set, the six data output registers are locked and any new data will not be placed in these register until one of these conditions are met:
+		 * 1. all six bytes have been read,
+		 * 2. the mode register is changed,
+		 * 3. the measurement configuration (CRA) is changed,
+		 * 4. power is reset.
 		 */
 		struct LOCK
 		{
@@ -367,7 +367,7 @@ public:
 		/* Bits RDY: */
 		/*
 		 * Ready Bit. Set when data is written to all six data registers. Cleared when device initiates a write to the data output registers and after one or more of the data output registers are written to. When RDY bit is clear it shall remain cleared for a 250 μs.
-		 *           DRDY pin can be used as an alternative to the status register for monitoring the device for measurement data. 
+		 * DRDY pin can be used as an alternative to the status register for monitoring the device for measurement data.
 		 */
 		struct RDY
 		{
@@ -397,7 +397,7 @@ public:
 	
 	/*
 	 * REG Identification:
-	 * The identification value for this device is stored in this register. 
+	 * The identification value for this device is stored in this register.
 	 */
 	struct Identification
 	{
