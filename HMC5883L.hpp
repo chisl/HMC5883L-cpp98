@@ -2,12 +2,17 @@
  * name:        HMC5883L
  * description: Surface-mount, multi-chip module designed for low-field magnetic sensing with a digital interface for applications such as lowcost compassing and magnetometry
  * manuf:       Honeywell
- * version:     0.1
+ * version:     Version 0.1
  * url:         https://aerocontent.honeywell.com/aero/common/documents/myaerospacecatalog-documents/Defense_Brochures-documents/HMC5883L_3-Axis_Digital_Compass_IC.pdf
  * date:        2016-08-01
  * author       https://chisl.io/
  * file:        HMC5883L.hpp
  */
+
+/*                                                                                                       *
+ *                                   THIS FILE IS AUTOMATICALLY CREATED                                  *
+ *                                    D O     N O T     M O D I F Y  !                                   *
+ *                                                                                                       */
 
 #include <cinttypes>
 
@@ -44,6 +49,7 @@ public:
 		/* Reserved for future function. Set to 0 when configuring CRA.  */
 		struct CRA7
 		{
+			/* MODE rw */
 			static const uint8_t dflt = 0b0; // 1'b0
 			static const uint8_t mask = 0b10000000; // [7]
 		};
@@ -51,6 +57,7 @@ public:
 		/* Select number of samples averaged (1 to 8) per measurement output.  */
 		struct MA
 		{
+			/* MODE rw */
 			static const uint8_t dflt = 0b00; // 2'b0
 			static const uint8_t mask = 0b01100000; // [5,6]
 			static const uint8_t MA_1 = 0b00; // Default 1 sample average/output
@@ -66,6 +73,7 @@ public:
 		 */
 		struct DO
 		{
+			/* MODE rw */
 			static const uint8_t dflt = 0b100; // 3'b100
 			static const uint8_t mask = 0b00011100; // [2,3,4]
 			static const uint8_t DO_0_75 = 0b00; // 0.75 Hz
@@ -85,6 +93,7 @@ public:
 		 */
 		struct MS
 		{
+			/* MODE rw */
 			static const uint8_t dflt = 0b00; // 2'b0
 			static const uint8_t mask = 0b00000011; // [0,1]
 			static const uint8_t Normal = 0b00; // Normal measurement configuration (Default). In normal measurement configuration the device follows normal measurement flow. The positive and negative pins of the resistive load are left floating and high impedance.
@@ -128,6 +137,7 @@ public:
 		 */
 		struct GN
 		{
+			/* MODE rw */
 			static const uint8_t dflt = 0b001; // 3'b1
 			static const uint8_t mask = 0b11100000; // [5,6,7]
 			static const uint8_t GN_1370 = 0b00; // +/- 0.88G / 1370 / 0.73    / 0xF800-0x07FF (-2048-2047 )
@@ -142,6 +152,7 @@ public:
 		/* Bits reserved_0: */
 		struct reserved_0
 		{
+			/* MODE rw */
 			static const uint8_t dflt = 0b00000; // 5'b0
 			static const uint8_t mask = 0b00011111; // [0,1,2,3,4]
 		};
@@ -178,18 +189,21 @@ public:
 		/* enable High Speed I2C, 3400kHz  */
 		struct HS
 		{
+			/* MODE rw */
 			static const uint8_t dflt = 0b0; // 1'b0
 			static const uint8_t mask = 0b10000000; // [7]
 		};
 		/* Bits unused_0: */
 		struct unused_0
 		{
+			/* MODE rw */
 			static const uint8_t dflt = 0b00000; // 5'b0
 			static const uint8_t mask = 0b01111100; // [2,3,4,5,6]
 		};
 		/* Bits MD: */
 		struct MD
 		{
+			/* MODE rw */
 			static const uint8_t dflt = 0b01; // 2'b1
 			static const uint8_t mask = 0b00000011; // [0,1]
 			/*
@@ -240,7 +254,7 @@ public:
 		/* Bits DataOutputX: */
 		struct DataOutputX_
 		{
-			/* Mode:r */
+			/* MODE r */
 			static const uint16_t mask = 0b1111111111111111; // [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 		};
 	};
@@ -275,7 +289,7 @@ public:
 		/* Bits DataOutputZ: */
 		struct DataOutputZ_
 		{
-			/* Mode:r */
+			/* MODE r */
 			static const uint16_t mask = 0b1111111111111111; // [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 		};
 	};
@@ -310,7 +324,7 @@ public:
 		/* Bits DataOutputY: */
 		struct DataOutputY_
 		{
-			/* Mode:r */
+			/* MODE r */
 			static const uint16_t mask = 0b1111111111111111; // [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 		};
 	};
@@ -345,6 +359,7 @@ public:
 		/* Bits reserved_0: */
 		struct reserved_0
 		{
+			/* MODE r */
 			static const uint8_t dflt = 0b000000; // 6'd0
 			static const uint8_t mask = 0b11111100; // [2,3,4,5,6,7]
 		};
@@ -361,6 +376,7 @@ public:
 		 */
 		struct LOCK
 		{
+			/* MODE r */
 			static const uint8_t dflt = 0b0; // 1'b0
 			static const uint8_t mask = 0b00000010; // [1]
 		};
@@ -371,6 +387,7 @@ public:
 		 */
 		struct RDY
 		{
+			/* MODE r */
 			static const uint8_t dflt = 0b0; // 1'b0
 			static const uint8_t mask = 0b00000001; // [0]
 		};
@@ -406,7 +423,7 @@ public:
 		/* Bits Identification: */
 		struct Identification_
 		{
-			/* Mode:r */
+			/* MODE r */
 			static const uint32_t dflt = 0b010010000011010000110011; // 24'b10010000011010000110011
 			static const uint32_t mask = 0b111111111111111111111111; // [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 		};
